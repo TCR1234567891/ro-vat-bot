@@ -3,6 +3,7 @@ import data
 from ..tools.trainings.check_profile import check_profile
 from ..tools.time.get_time import get_time as get_time
 from ..tools.time.get_time_abv import get_time_abv as get_time_abv
+from ..tools.time.get_time_abv_short import get_time_abv_short as get_time_abv_short
 
 @interactions.slash_command(
         name="profile",
@@ -27,8 +28,16 @@ async def handle_profile(ctx: interactions.SlashContext, username: str):
     found_data = check_profile(user_id)
     found_username = found_data[0]
     found_history = found_data[1]
+    time_num = 0
+    for time in found_history:
+        if time == found_history[0]:
+            pass
+        else:
+            found_history[time_num] = float(time)
+        time_num += 1
     if found_username:
         found_mention = username.mention
+        print(found_history)
         found_history.append(found_history[1]+found_history[2]+found_history[3])
         record_string = ""
         training_num = 0
@@ -39,10 +48,10 @@ async def handle_profile(ctx: interactions.SlashContext, username: str):
             elif record[4]==1:
                 passorfail="Pass"
             training_num += 1
-            record_string += f"\n**Training #{training_num}:**\n- *Training:* {record[1]}\n- *Grade:* {passorfail}\n- *Trainer:* <@{record[2]}>\n- *Timestamp:* {record[3]}\n"
+            record_string += f"\n**Training #{training_num}:**\n- *Training:* {record[1]}\n- *Grade:* {passorfail}\n- *Trainer:* <@{record[2]}>\n- *Timestamp:* {record[3][:-4]}Z\n"
         final_embed = interactions.Embed(
             title=f"{str_username[1:-1]}'s Profile",  
-            description=f"**User:**\n{found_mention}\n{record_string}\n**Total Time Controlled: {get_time(found_history[4])}**\n- *CTR: {get_time_abv(found_history[3])}*\n- *TWR: {get_time_abv(found_history[2])}*\n- *DEL/GND: {get_time_abv(found_history[1])}*",
+            description=f"**User:**\n{found_mention}\n{record_string}\n**Total Time Controlled: {get_time(found_history[4])}**\n- *CTR: {get_time_abv_short(found_history[3])}*\n- *TWR: {get_time_abv_short(found_history[2])}*\n- *DEL/GND: {get_time_abv_short(found_history[1])}*",
             color= interactions.Color.from_rgb(0, 57, 153))
         await ctx.send(embed=final_embed)
     else:

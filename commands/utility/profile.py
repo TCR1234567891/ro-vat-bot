@@ -51,7 +51,7 @@ async def handle_profile(ctx: interactions.SlashContext, username: str):
             record_string += f"\n**Training #{training_num}:**\n- *Training:* {record[1]}\n- *Grade:* {passorfail}\n- *Trainer:* <@{record[2]}>\n- *Timestamp:* {record[3][:-4]}Z\n"
         final_embed = interactions.Embed(
             title=f"{str_username[1:-1]}'s Profile",  
-            description=f"**User:**\n{found_mention}\n{record_string}\n**Total Time Controlled: {get_time(found_history[4])}**\n- *CTR: {get_time_abv_short(found_history[3])}*\n- *TWR: {get_time_abv_short(found_history[2])}*\n- *DEL/GND: {get_time_abv_short(found_history[1])}*",
+            description=f"**User:**\n{found_mention}\n{record_string}\n**Total Time Controlled: {get_time_abv(found_history[4])}**\n- *CTR: {get_time_abv_short(found_history[3])}*\n- *TWR: {get_time_abv_short(found_history[2])}*\n- *DEL/GND: {get_time_abv_short(found_history[1])}*",
             color= interactions.Color.from_rgb(0, 57, 153))
         await ctx.send(embed=final_embed)
     else:

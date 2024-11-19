@@ -13,4 +13,6 @@ setup(bot)
 
 print("Finalizing Initialization\n \n")
 
+print("Hello World")
+
 bot.start()

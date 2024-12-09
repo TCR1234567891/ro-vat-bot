@@ -56,6 +56,7 @@ async def handle_log_on(ctx: interactions.SlashContext, position: str):
             color= interactions.Color.from_rgb(221, 53, 53))
         await ctx.send(embed=error_embed,ephemeral=True)
         
+        
 def setup(bot):
     print("Registered /log_on successfully")
     bot.add_command(handle_log_on)

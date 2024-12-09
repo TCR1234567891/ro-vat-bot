@@ -51,7 +51,7 @@ async def handle_fplan(ctx: interactions.ComponentContext):
             max_length=200
             ),
         interactions.ShortText(
-            label="Cruise Altitude",
+            label="Cruise Level",
             custom_id="cruise",
             placeholder="e.g. 050",
             required=True,

@@ -1,7 +1,5 @@
 import interactions
 
-bot_token = "MTI0OTc2NjAzMzQ3Mjg4MDc1MA.GDhEcr.aC7Z9yHk39OTQtnI1Zl49b6tUZTX2A38lGqHEs"
-
 # Channels:
 treq_channel_id = 1251588809192374323
 cmd_channel_id = 1251588741383061574

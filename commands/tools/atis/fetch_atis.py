@@ -1,10 +1,11 @@
-import sqlite3
+﻿import sqlite3
 import data
 import json
 
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 def fetch_atis():
-    conn = sqlite3.connect('serverdata.db')
+    conn = sqlite3.connect('DB_PATH')
     c = conn.cursor()
     c.execute("SELECT * FROM atisdata")
     found_atist = c.fetchall()

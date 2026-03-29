@@ -1,8 +1,9 @@
-import interactions
+﻿import interactions
 import sqlite3
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 def check_profile(y):
-    conn = sqlite3.connect("serverdata.db")
+    conn = sqlite3.connect("DB_PATH")
     c = conn.cursor() 
     c.execute("SELECT *, rowid FROM trainingdata")
     records = c.fetchall()

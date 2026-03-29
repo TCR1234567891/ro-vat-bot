@@ -1,10 +1,11 @@
-import sqlite3
+﻿import sqlite3
 import time
 
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 def del_con_active(user, position):
     user_str = str(user)
-    conn = sqlite3.connect("serverdata.db")
+    conn = sqlite3.connect("DB_PATH")
     c = conn.cursor()
     c.execute('SELECT *, rowid FROM con_active')
     cont = c.fetchall()

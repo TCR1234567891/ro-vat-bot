@@ -1,9 +1,10 @@
-import sqlite3
+﻿import sqlite3
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 def publish_atis(airport, identifier, rwys, rmks, timestamp):
     global atis_updated
     atis_updated = True
-    conn = sqlite3.connect('serverdata.db')
+    conn = sqlite3.connect('DB_PATH')
     c = conn.cursor()
     c.execute("SELECT *, rowid FROM atisdata")
     all_atis = c.fetchall()
@@ -17,3 +18,4 @@ def publish_atis(airport, identifier, rwys, rmks, timestamp):
     conn.commit()
     conn.close()
     
+

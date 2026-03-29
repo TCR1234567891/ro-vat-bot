@@ -1,16 +1,17 @@
-import sqlite3
+﻿import sqlite3
 import interactions
 from ..tools.atis.fetch_atis import fetch_atis
 import data
 import pytz
 from datetime import datetime
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 utc_timezone = pytz.UTC
 
 
 def event_end():
     global atis_updated
-    conn = sqlite3.connect('serverdata.db')
+    conn = sqlite3.connect('DB_PATH')
     c = conn.cursor()
     c.execute('DELETE FROM atisdata;')
     c.execute('DELETE FROM wxdata;')

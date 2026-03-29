@@ -1,9 +1,10 @@
-import sqlite3
+﻿import sqlite3
 import time
 
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 def update_con_active(airport, user):
-    conn = sqlite3.connect("serverdata.db")
+    conn = sqlite3.connect("DB_PATH")
     c = conn.cursor()
     c.execute('SELECT *, rowid FROM con_active')
     cont = c.fetchall()
@@ -15,7 +16,7 @@ def update_con_active(airport, user):
         elif con_active[1] == airport:
             return 0
     start_time = time.time()
-    conn = sqlite3.connect("serverdata.db")
+    conn = sqlite3.connect("DB_PATH")
     c = conn.cursor()
     c.execute("""
         INSERT INTO con_active (userid, pos, time_start) VALUES (?, ?, ?)

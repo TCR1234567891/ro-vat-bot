@@ -1,10 +1,11 @@
-import sqlite3
+﻿import sqlite3
 import random
 import json
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 def event_start():
     global atis_updated
-    conn = sqlite3.connect("serverdata.db")
+    conn = sqlite3.connect("DB_PATH")
     c = conn.cursor() 
     c.execute("SELECT *, rowid FROM atisdata")
     atis_records = c.fetchall()
@@ -16,7 +17,7 @@ def event_start():
         atis_updated = True
         return hosted_success
     else:
-        conn = sqlite3.connect("serverdata.db")
+        conn = sqlite3.connect("DB_PATH")
         c = conn.cursor()
         nill = ["Nill"]
         wxtype = ["CLR","SCT"]

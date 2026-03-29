@@ -1,8 +1,9 @@
-import sqlite3
+﻿import sqlite3
 
 
+from simply_wisconsin_bot.commands.shared import DB_PATH
 def check_leaderboard():
-    conn = sqlite3.connect("serverdata.db")
+    conn = sqlite3.connect("DB_PATH")
     c = conn.cursor()
     c.execute('SELECT * FROM con_history')
     leaderboard = c.fetchall()
